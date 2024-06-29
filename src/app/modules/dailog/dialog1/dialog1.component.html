@@ -9,7 +9,7 @@
   >
   <span style="float: right; cursor: default">
     <button
-      *ngIf="contentVisible"
+      *ngIf="!isMinimize"
       mat-icon-button
       tabindex="-1"
       (click)="minimize()"
@@ -21,7 +21,9 @@
     </button>
   </span>
 </div>
-<div [hidden]="!contentVisible">
+
+<!-- [hidden]="!contentVisible" -->
+<div>
   <div mat-dialog-content>
     <p>What's your favorite animal?</p>
     <mat-form-field>

@@ -1,6 +1,6 @@
 <div class="tray">
   <div class="modalWindow" *ngFor="let modal of minimizeModals">
-    <h5 (click)="openModal(modal)">{{ modal.title }}</h5>
+    <h5 (click)="openModal(modal)" [title]="modal.title">{{ modal.title.slice(0,5)+'...' }}</h5>
 
     <button (click)="closeModal(modal)">X</button>
   </div>

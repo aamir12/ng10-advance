@@ -21,7 +21,7 @@ export class Dialog2Component {
     private modalService: ModalService
   ) {}
 
-  contentVisible: boolean = true;
+  // contentVisible: boolean = true;
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -29,14 +29,14 @@ export class Dialog2Component {
 
   minimize() {
     this.isMinimize = true;
-    this.contentVisible = false;
+    // this.contentVisible = false;
     this.dialogRef.updatePosition({ bottom: '-100%', right: '25%' });
 
     // this.backdropService.hideBackDrop();
 
     const modal = {
       id: DialogID.DIALOG2,
-      title: this.title.slice(0,5)+'...',
+      title: this.title,
       maximizeFn: this.maximize.bind(this),
       closeDialogFn: this.closeDialog.bind(this),
     };
@@ -47,7 +47,7 @@ export class Dialog2Component {
   maximize() {
     // this.backdropService.showBackdrop();
     this.isMinimize = false;
-    this.contentVisible = true;
+    // this.contentVisible = true;
     this.dialogRef.updatePosition();
   }
 

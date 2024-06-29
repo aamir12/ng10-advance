@@ -20,7 +20,7 @@ export class Dialog1Component {
     private modalService: ModalService
   ) {}
 
-  contentVisible: boolean = true;
+  // contentVisible: boolean = true;
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -28,25 +28,22 @@ export class Dialog1Component {
 
   minimize() {
     this.isMinimize = true;
-    this.contentVisible = false;
     this.dialogRef.updatePosition({ bottom: '-100%', right: '0' });
-
     // this.backdropService.hideBackDrop();
 
     const modal = {
       id: DialogID.DIALOG1,
-      title: this.title.slice(0,5)+'...',
+      title: this.title,
       maximizeFn: this.maximize.bind(this),
       closeDialogFn: this.closeDialog.bind(this),
     };
-
     this.modalService.addModal(modal);
   }
 
   maximize() {
     // this.backdropService.showBackdrop();
     this.isMinimize = false;
-    this.contentVisible = true;
+    // this.contentVisible = true;
     this.dialogRef.updatePosition();
   }
 

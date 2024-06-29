@@ -1,34 +1,45 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export interface IModal {
+  closetype: 'ALL' | 'SINGLE' | 'NONE';
+  modals: any[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
-
-  
-
-  private openedModal = new BehaviorSubject<any[]>([]);
+  defaultValue:IModal = {
+    closetype: 'NONE',
+    modals:[]
+  }
+  private openedModal = new BehaviorSubject<IModal>(this.defaultValue);
   openedModal$ = this.openedModal.asObservable();
   addModal(modal: any) {
     const currentValue = this.openedModal.value;
-    const isExist = currentValue.find((exmodal) => exmodal.id === modal.id);
+    const isExist = currentValue.modals.find((exmodal) => exmodal.id === modal.id);
     if (isExist) {
       return;
     }
-    const updatedValue = [modal, ...currentValue];
-    this.openedModal.next(updatedValue);
+    const modals = [modal, ...currentValue.modals];
+    this.openedModal.next({...currentValue,modals});
   }
 
   closeModal(id) {
-    const filterModals = this.openedModal.value.filter(
+    const currentValue = this.openedModal.value;
+    const isExist = currentValue.modals.find((exmodal) => exmodal.id === id);
+    if (!isExist) {
+      return;
+    }
+    const modals = currentValue.modals.filter(
       (exmodal) => exmodal.id !== id
     );
 
-    this.openedModal.next(filterModals);
+    this.openedModal.next({...this.openedModal.value , modals});
   }
 
   removeAll() {
-    this.openedModal.next([]);
+    this.openedModal.next(this.defaultValue);
   }
 }
