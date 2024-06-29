@@ -32,8 +32,8 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
     this.modalService.openedModal$
     .pipe(takeUntil(this.destroy$))
     .subscribe((openModals) => {
-      this.disableOpenDialog1 = !!openModals.modals.find(modal => modal.id === DialogID.DIALOG1); 
-      this.disableOpenDialog2 = !!openModals.modals.find(modal => modal.id === DialogID.DIALOG2); 
+      this.disableOpenDialog1 = !!openModals.find(modal => modal.id === DialogID.DIALOG1); 
+      this.disableOpenDialog2 = !!openModals.find(modal => modal.id === DialogID.DIALOG2); 
     })
   }
 
@@ -74,15 +74,15 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
   }
 
   ngOnDestroy() {
-    // if (this.dialogRef1) {
-    //   this.dialogRef1.close();
-    // }
+    if (this.dialogRef1) {
+      this.dialogRef1.close();
+    }
 
-    // if (this.dialogRef2) {
-    //   this.dialogRef2.close();
-    // }
+    if (this.dialogRef2) {
+      this.dialogRef2.close();
+    }
 
-    // this.modalService.removeAll();
+    this.modalService.removeAll();
     this.destroy$.next();
     this.destroy$.complete();
   }

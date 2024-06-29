@@ -12,7 +12,7 @@ export class DailogTrayComponent implements OnInit {
   minimizeModals: any[] = [];
   ngOnInit() {
     this.modalService.openedModal$.subscribe((openModals) => {
-      this.minimizeModals = openModals.modals;
+      this.minimizeModals = openModals;
     });
   }
 
