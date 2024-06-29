@@ -1,0 +1,36 @@
+.tray {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+.modalWindow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  min-width: 180px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.modalWindow h5,
+button {
+  margin: 0px;
+  cursor: pointer;
+}
+
+.modalWindow button {
+  background: none;
+  border: none;
+}
+
+.modalWindow h5 {
+  flex: 1;
+  font-weight: 600;
+}

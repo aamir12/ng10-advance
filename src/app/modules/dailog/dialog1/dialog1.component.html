@@ -1,0 +1,37 @@
+<div
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  <span (click)="maximize()"
+    >{{  title }}</span
+  >
+  <span style="float: right; cursor: default">
+    <button
+      *ngIf="contentVisible"
+      mat-icon-button
+      tabindex="-1"
+      (click)="minimize()"
+    >
+      <mat-icon>maximize</mat-icon>
+    </button>
+    <button mat-icon-button tabindex="-1" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </span>
+</div>
+<div [hidden]="!contentVisible">
+  <div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.animal" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
+      Ok
+    </button>
+  </div>
+</div>

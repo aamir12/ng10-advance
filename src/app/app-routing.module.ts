@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
-
+const routes: Routes = [
+  {
+    path: 'dailog',
+    loadChildren: () =>
+      import('./modules/dailog/dailog.module').then((mod) => mod.DailogModule),
+  },
+  {
+    path: 'other',
+    loadChildren: () => import('./modules/other/other.module').then((mod) => mod.OtherModule),
+  },
+  { path: '', redirectTo: '/dailog', pathMatch: 'full' },
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

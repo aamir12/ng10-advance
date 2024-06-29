@@ -1,0 +1,7 @@
+<div class="tray">
+  <div class="modalWindow" *ngFor="let modal of minimizeModals">
+    <h5 (click)="openModal(modal)">{{ modal.title }}</h5>
+
+    <button (click)="closeModal(modal)">X</button>
+  </div>
+</div>
