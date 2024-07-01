@@ -21,18 +21,15 @@ export class Dialog2Component {
     private modalService: ModalService
   ) {}
 
-  // contentVisible: boolean = true;
-
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   minimize() {
     this.isMinimize = true;
-    // this.contentVisible = false;
     this.dialogRef.updatePosition({ bottom: '-100%', right: '25%' });
 
-    // this.backdropService.hideBackDrop();
+    this.backdropService.hideBackDrop();
 
     const modal = {
       id: DialogID.DIALOG2,
@@ -45,9 +42,8 @@ export class Dialog2Component {
   }
 
   maximize() {
-    // this.backdropService.showBackdrop();
+    this.backdropService.showBackdrop();
     this.isMinimize = false;
-    // this.contentVisible = true;
     this.dialogRef.updatePosition();
   }
 

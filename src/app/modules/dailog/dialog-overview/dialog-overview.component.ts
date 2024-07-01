@@ -39,7 +39,7 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
 
   openDialog1(): void {
     this.disableOpenDialog1 = true;
-    // this.backdropService.showBackdrop();
+    this.backdropService.showBackdrop();
     this.dialogRef1 = this.dialog.open(Dialog1Component, {
       disableClose: true,
       hasBackdrop: false,
@@ -48,7 +48,7 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
     });
 
     this.dialogRef1.afterClosed().subscribe((result) => {
-      // this.backdropService.hideBackDrop();
+      this.backdropService.hideBackDrop();
       this.disableOpenDialog1 = false;
       this.animal = result;
       this.dialogRef1 = null;
@@ -57,7 +57,7 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
 
   openDialog2(): void {
     this.disableOpenDialog2 = true;
-    // this.backdropService.showBackdrop();
+    this.backdropService.showBackdrop();
     this.dialogRef2 = this.dialog.open(Dialog2Component, {
       disableClose: true,
       hasBackdrop: false,
@@ -65,7 +65,7 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
     });
 
     this.dialogRef2.afterClosed().subscribe((result) => {
-      // this.backdropService.hideBackDrop();
+      this.backdropService.hideBackDrop();
       this.disableOpenDialog2 = false;
       this.animal = result;
       console.log('closed 2');
@@ -74,15 +74,15 @@ export class DialogOverviewComponent implements  OnDestroy,OnInit {
   }
 
   ngOnDestroy() {
-    if (this.dialogRef1) {
-      this.dialogRef1.close();
-    }
+    // if (this.dialogRef1) {
+    //   this.dialogRef1.close();
+    // }
 
-    if (this.dialogRef2) {
-      this.dialogRef2.close();
-    }
+    // if (this.dialogRef2) {
+    //   this.dialogRef2.close();
+    // }
 
-    this.modalService.removeAll();
+    // this.modalService.removeAll();
     this.destroy$.next();
     this.destroy$.complete();
   }
